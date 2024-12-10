@@ -18,38 +18,7 @@ line_bot_api = LineBotApi('wHOb+zwQ/IKyPb2H2uilm21xT5S8xZxlT//J2Z6+iWSapkrXtbnvl
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('fe825cf379416132fb77e8180145d986')
 
-line_bot_api.push_message('Ud18701c20f39da291eeaba864d796ead', imagemap_message = ImagemapSendMessage(
-            base_url='https://i.imgur.com/xMUKNtn.jpg',
-            alt_text='組圖訊息',
-            base_size=BaseSize(height=2000, width=2000),
-            actions=[
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Cebu',
-                    area=ImagemapArea(
-                        x=0, y=0, width=1000, height=1000
-                    )
-                ),
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Taipei',
-                    area=ImagemapArea(
-                        x=1000, y=0, width=1000, height=1000
-                    )
-                ),
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Osaka',
-                    area=ImagemapArea(
-                        x=0, y=1000, width=1000, height=1000
-                    )
-                ),
-                URIImagemapAction(
-                    link_uri='https://en.wikipedia.org/wiki/Shanghai',
-                    area=ImagemapArea(
-                        x=1000, y=1000, width=1000, height=1000
-                    )
-                )
-            ]
-        ),
-        TextSendMessage(text='你可以開始了'))
+line_bot_api.push_message('Ud18701c20f39da291eeaba864d796ead',TextSendMessage(text='你可以開始了'))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
