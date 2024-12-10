@@ -50,7 +50,7 @@ imagemap_message = ImagemapSendMessage(
             ]
         )
 line_bot_api.push_message('Ud18701c20f39da291eeaba864d796ead',imagemap_message)
-line_bot_api.reply_message(event.reply_token,TextSendMessage(text='你可以開始了'))
+line_bot_api.push_message('Ud18701c20f39da291eeaba864d796ead',TextSendMessage(text='你可以開始了'))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
