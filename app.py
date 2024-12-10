@@ -14,11 +14,42 @@ import re
 app = Flask(__name__)
 
 # 必須放上自己的Channel Access Token
-line_bot_api = LineBotApi('7EgMow7uxowokDODkkKPAlCpBTHDiEonMBF3aRWVvDyWUe327qvsC9wiIJQpV7+zcrhQ5yVDxNNLy9gdDjNbDD+ZKudiHBVn0GXJfe0ic8jkLKVxCFW2/RHPVIjhlBWaSckrCxYafTe0rnBzl1p0fQdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('wHOb+zwQ/IKyPb2H2uilm21xT5S8xZxlT//J2Z6+iWSapkrXtbnvl0z6oo8ic7PWFe981KX4sNJyZXL1uXVNHprF8gG3sDX2bhY+FJLRRQV6eKA0mfJW1al0h3JckoDrrRA/88cLT3EMv4M6my4jgAdB04t89/1O/w1cDnyilFU=')
 # 必須放上自己的Channel Secret
-handler = WebhookHandler('4c3e800f2b2dd2c49b87326fc94a5357')
+handler = WebhookHandler('fe825cf379416132fb77e8180145d986')
 
-line_bot_api.push_message('Ud18701c20f39da291eeaba864d796ead', TextSendMessage(text='你可以開始了'))
+line_bot_api.push_message('Ud18701c20f39da291eeaba864d796ead', imagemap_message = ImagemapSendMessage(
+            base_url='https://i.imgur.com/xMUKNtn.jpg',
+            alt_text='組圖訊息',
+            base_size=BaseSize(height=2000, width=2000),
+            actions=[
+                URIImagemapAction(
+                    link_uri='https://en.wikipedia.org/wiki/Cebu',
+                    area=ImagemapArea(
+                        x=0, y=0, width=1000, height=1000
+                    )
+                ),
+                URIImagemapAction(
+                    link_uri='https://en.wikipedia.org/wiki/Taipei',
+                    area=ImagemapArea(
+                        x=1000, y=0, width=1000, height=1000
+                    )
+                ),
+                URIImagemapAction(
+                    link_uri='https://en.wikipedia.org/wiki/Osaka',
+                    area=ImagemapArea(
+                        x=0, y=1000, width=1000, height=1000
+                    )
+                ),
+                URIImagemapAction(
+                    link_uri='https://en.wikipedia.org/wiki/Shanghai',
+                    area=ImagemapArea(
+                        x=1000, y=1000, width=1000, height=1000
+                    )
+                )
+            ]
+        ),
+        TextSendMessage(text='你可以開始了'))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
